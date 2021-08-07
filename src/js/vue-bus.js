@@ -1,0 +1,23 @@
+// bue-bus.js
+
+// $emit(event,...args)的...args是参数的解构,接收所有参数;
+const install = function (Vue) {
+    const Bus = new Vue({
+        methods: {
+            emit(event, ...args) {
+                this.$emit(event, ...args);
+            }, on(event, callback) {
+                this.$on(event, callback);
+            }, off(event, callback) {
+                this.$off(event, callback);
+            }
+        }
+    });
+    Vue.prototype.$bus = Bus;
+};
+
+export default install;
+
+
+
+
